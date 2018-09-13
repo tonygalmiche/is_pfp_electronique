@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem
+            name="Tables"
+            id="is_sales_table_menu" 
+            parent="sales_team.menu_base_partner" 
+            sequence="900"
+        />
+
+        <menuitem
+            name="Familles"
+            id="is_famille_menu" 
+            action="is_famille_action"  
+            parent="is_sales_table_menu" 
+            sequence="10"
+        />
+
+        <menuitem
+            name="Sous-Familles 1"
+            id="is_sous_famille1_menu" 
+            action="is_sous_famille1_action"  
+            parent="is_sales_table_menu" 
+            sequence="20"
+        />
+
+
+        <menuitem
+            name="Sous-Familles 2"
+            id="is_sous_famille2_menu" 
+            action="is_sous_famille2_action"  
+            parent="is_sales_table_menu" 
+            sequence="30"
+        />
+
+        <menuitem
+            name="Emplacements de stocks"
+            id="is_emplacement_stock_menu" 
+            action="is_emplacement_stock_action"  
+            parent="is_sales_table_menu" 
+            sequence="40"
+        />
+
+
+        <menuitem
+            name="Secteurs"
+            id="is_secteur_menu" 
+            action="is_secteur_action"  
+            parent="is_sales_table_menu" 
+            sequence="50"
+        />
+
+        <menuitem
+            name="Activités"
+            id="is_activite_menu" 
+            action="is_activite_action"  
+            parent="is_sales_table_menu" 
+            sequence="60"
+        />
+
+
+
+
+    </data>
+
+</odoo>

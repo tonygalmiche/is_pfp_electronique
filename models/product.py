@@ -59,8 +59,8 @@ class ProductTemplate(models.Model):
 class ProductSupplierinfo(models.Model):
     _inherit = "product.supplierinfo"
 
-    is_fabriquant     = fields.Char('Fabriquant')
-    is_ref_fabriquant = fields.Char('Référence fabriquant')
+    is_fabriquant     = fields.Char('Fabricant')
+    is_ref_fabriquant = fields.Char('Référence fabricant')
 
 
 

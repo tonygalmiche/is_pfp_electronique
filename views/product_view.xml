@@ -173,13 +173,16 @@
                 <field name="is_designation_groupe"/>
                 <field name="is_lien_documentation"  widget="url" placeholder="documentation"/>
                 <field name="is_stock_mini"/>
+                <field name="is_lot_reappro"/>
                 <field name="is_famille_id"/>
                 <field name="is_sous_famille1_id"/>
                 <field name="is_sous_famille2_id"/>
                 <field name="is_emplacement_stock_id"/>
+                <field name="is_note"/>
             </field>
         </field>
     </record>
+
 
    <record id="is_product_template_tree_view" model="ir.ui.view">
         <field name="name">is_product_template_tree_view</field>
@@ -195,6 +198,7 @@
             <field name="type" position="after">
                 <field name="is_emplacement_stock_id"/>
                 <field name="is_stock_mini"/>
+                <field name="is_lot_reappro"/>
                 <field name="is_qt_cde"/>
             </field>
         </field>
@@ -211,6 +215,7 @@
                 <field name="is_sous_famille1_id"/>
                 <field name="is_sous_famille2_id"/>
                 <field name="is_emplacement_stock_id"/>
+                <field name="is_note"/>
             </field>
         </field>
     </record>
@@ -222,7 +227,9 @@
         <field name="inherit_id" ref="product.product_supplierinfo_tree_view"/>
         <field name="arch" type="xml">
             <field name="name" position="after">
+                <field name="product_code"/>
                 <field name="is_fabriquant"/>
+                <field name="is_ref_fabriquant"/>
             </field>
         </field>
     </record>
@@ -231,8 +238,9 @@
         <field name="model">product.supplierinfo</field>
         <field name="inherit_id" ref="product.product_supplierinfo_form_view"/>
         <field name="arch" type="xml">
-            <field name="name" position="after">
+            <field name="product_code" position="after">
                 <field name="is_fabriquant"/>
+                <field name="is_ref_fabriquant"/>
             </field>
         </field>
     </record>

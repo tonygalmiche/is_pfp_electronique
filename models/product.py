@@ -32,6 +32,9 @@ class ProductTemplate(models.Model):
     _inherit = "product.template"
 
 
+    _sql_constraints = [('is_default_code_uniq','UNIQUE(default_code)', 'Ce code existe déjà')]
+
+
     @api.depends('is_stock_mini', 'qty_available')
     def _is_qt_cde(self):
         for obj in self:
@@ -44,17 +47,20 @@ class ProductTemplate(models.Model):
     is_designation_groupe   = fields.Char('Désignation groupe')
     is_lien_documentation   = fields.Char('Lien documentation')
     is_stock_mini           = fields.Integer('Stock mini')
+    is_lot_reappro          = fields.Integer('Lot de réappro')
     is_famille_id           = fields.Many2one('is.famille', 'Famille')
     is_sous_famille1_id     = fields.Many2one('is.sous.famille1', 'Sous-famille 1')
     is_sous_famille2_id     = fields.Many2one('is.sous.famille2', 'Sous-famille 2')
     is_emplacement_stock_id = fields.Many2one('is.emplacement.stock', 'Emplacement de stock')
     is_qt_cde               = fields.Float('Qt à commander', compute=_is_qt_cde, store=False, digits=dp.get_precision('Product Unit of Measure'))
+    is_note                 = fields.Text('Note')
 
 
 class ProductSupplierinfo(models.Model):
     _inherit = "product.supplierinfo"
 
-    is_fabriquant   = fields.Char('Fabriquant')
+    is_fabriquant     = fields.Char('Fabriquant')
+    is_ref_fabriquant = fields.Char('Référence fabriquant')
 
 
 

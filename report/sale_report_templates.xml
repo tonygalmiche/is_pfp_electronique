@@ -8,57 +8,50 @@
             <div class="oe_structure"/>
             <div class="row">
                 <div class="col-xs-6">
-                    <h3>
-                        <span t-if="doc.state not in ['draft','sent']">Commande </span>
-                        <span t-if="doc.state in ['draft','sent']">Devis </span>
-                        <span t-field="doc.name"/> du <t t-esc="datetime.datetime.strptime(doc.date_order, '%Y-%m-%d %H:%M:%S').strftime('%d/%m/%Y') "/>
-
-
-
-                    </h3>
+                    <strong t-if="doc.partner_shipping_id == doc.partner_invoice_id">Adresse de livraison et de facturation:</strong>
+                    <strong t-if="doc.partner_shipping_id != doc.partner_invoice_id">Adresse de facturation:</strong>
+                    <div t-field="doc.partner_invoice_id"
+                        t-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                    <p t-if="doc.partner_id.vat">VAT: <span t-field="doc.partner_id.vat"/></p>
+                    <div t-if="doc.partner_shipping_id != doc.partner_invoice_id" class="mt8">
+                        <strong>Adresse de livraison:</strong>
+                        <div t-field="doc.partner_shipping_id"
+                            t-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                        <p t-if="doc.partner_id.vat">VAT: <span t-field="doc.partner_id.vat"/></p>
+                    </div>
                 </div>
                 <div class="col-xs-5 col-xs-offset-1">
-                    <div><b>Destinataire :</b></div>
+                    <div style="height:20mm"> </div>
                     <div t-field="doc.partner_id"
-                        t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' 
-                    />
-                    <div>à l'attention de  <span t-field="doc.is_contact_id.name"/></div>
-                </div>
-            </div><br />
-
-            <div class="row" t-if="doc.is_entete_devis">
-                <div class="col-xs-12">
-                    <span t-field="doc.is_entete_devis"/>
+                        t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
                 </div>
             </div>
 
-            <br />
-            <div class="row">
-                <div class="col-xs-12" t-if="doc.is_nom_chantier">
-                    <b>CHANTIER : <span t-field="doc.is_nom_chantier"/></b>
+            <h2>
+                <span t-if="doc.state not in ['draft','sent']">Devis </span>
+                <span t-if="doc.state in ['draft','sent']">Commande </span>
+                <span t-field="doc.name"/>
+            </h2>
+
+            <div class="row mt32 mb32" id="informations">
+                <div t-if="doc.client_order_ref" class="col-xs-3">
+                    <strong>Votre référence:</strong>
+                    <p t-field="doc.client_order_ref"/>
                 </div>
-                <div class="col-xs-1"/>
-                <div class="col-xs-11">
-                    <ul>
-                        <li t-if="doc.is_superficie">
-                            SUPERFICIE : <b><span t-field="doc.is_superficie"/></b><t t-if="doc.is_hauteur"> - HAUTEUR : <b><span t-field="doc.is_hauteur"/></b></t>
-                        </li>
-                        <li t-if="doc.is_nb_interventions">
-                            NOMBRE D'INTERVENTIONS : <b><span t-field="doc.is_nb_interventions"/></b>
-                        </li>
-                        <li t-if="doc.is_type_chantier">
-                            TYPE DE CHANTIER : <b><span t-field="doc.is_type_chantier"/></b>
-                        </li>
-                        <li t-if="doc.is_type_prestation_id">
-                            TYPE DE PRESTATION : <b><span t-field="doc.is_type_prestation_id"/></b>
-                        </li>
-                        <li t-if="doc.is_nacelle_id">
-                            NACELLE : <b><span t-field="doc.is_nacelle_id"/></b>
-                        </li>
-                    </ul>
+                <div t-if="doc.date_order" class="col-xs-3">
+                    <strong t-if="doc.state not in ['draft','sent']">Date de la commande:</strong>
+                    <strong t-if="doc.state in ['draft','sent']">Date du devis:</strong>
+                    <p t-field="doc.date_order"/>
+                </div>
+                <div t-if="doc.user_id.name" class="col-xs-3">
+                    <strong>Vendeur:</strong>
+                    <p t-field="doc.user_id"/>
+                </div>
+                <div name="payment_term" t-if="doc.payment_term_id" class="col-xs-3">
+                    <strong>Conditions de paiement:</strong>
+                    <p t-field="doc.payment_term_id"/>
                 </div>
             </div>
-            <br />
 
             <!-- Is there a discount on at least one line? -->
             <t t-set="display_discount" t-value="any([l.discount for l in doc.order_line])"/>
@@ -70,10 +63,10 @@
                             <th>Description</th>
                             <th class="text-right">Quantité</th>
                             <th class="text-right">Prix unitaire</th>
-                            <th t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">Remise(%)</th>
+                            <th t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">Disc.(%)</th>
                             <th class="text-right">TVA</th>
-                            <th class="text-right" groups="sale.group_show_price_subtotal">Montant HT</th>
-                            <!--<th class="text-right price_tax_included" groups="sale.group_show_price_total">Montant TTC</th>-->
+                            <th class="text-right" groups="sale.group_show_price_subtotal">Prix</th>
+                            <th class="text-right price_tax_included" groups="sale.group_show_price_total">Total</th>
                         </tr>
                    </thead>
                    <tbody class="sale_tbody">
@@ -90,9 +83,7 @@
                             <!-- Lines associated -->
                             <t t-foreach="layout_category['lines']" t-as="l">
                                 <tr>
-                                    <td>
-                                        <span t-field="l.name"/>
-                                    </td>
+                                    <td><span t-field="l.name"/></td>
                                     <td class="text-right">
                                         <span t-field="l.product_uom_qty"/>
                                         <span t-field="l.product_uom" groups="product.group_uom"/>
@@ -120,7 +111,7 @@
                             <t t-if="(layout_category_size > 1 or page_size > 1) and layout_category['subtotal']" groups="sale.group_sale_layout">
                                 <tr class="text-right">
                                     <td colspan="6">
-                                        <strong>Total HT : </strong>
+                                        <strong>Total HT: </strong>
                                         <t t-set="subtotal" t-value="sum(line.price_subtotal for line in layout_category['lines'])"/>
                                         <span t-esc="subtotal" t-options="{'widget': 'monetary', 'display_currency': doc.pricelist_id.currency_id}"/>
                                     </td>
@@ -148,7 +139,7 @@
                         </tr>
                         <t t-foreach="doc._get_tax_amount_by_group()" t-as="amount_by_group">
                             <tr>
-                                <td>TVA</td>
+                                <td><span t-esc="amount_by_group[0] or 'TVA'"/></td>
                                 <td class="text-right">
                                     <span t-esc="amount_by_group[1]"
                                         t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
@@ -166,49 +157,15 @@
                 </div>
             </div>
 
-
-            <div class="row" t-if="doc.is_pied_devis">
-                <div class="col-xs-12">
-                    <span t-field="doc.is_pied_devis"/>
-                </div>
-                <br />
-            </div>
-            <br />
+            <p t-field="doc.note" />
             <p t-if="doc.payment_term_id.note">
-                <strong>Conditions de règlement : </strong>
-                <span t-field="doc.payment_term_id.name"/>
+                <span t-field="doc.payment_term_id.note"/>
             </p>
-
-
-            <div class="row mt32 mb32" id="informations" style="display:none">
-                <div name="payment_term" t-if="doc.payment_term_id" class="col-xs-3">
-                    <p t-field="doc.payment_term_id"/>
-                </div>
-            </div>
-
-
-           <div class="row">
-                <div class="col-xs-12">
-                    <t t-if="not doc.is_nacelle_id">
-                        <p>Pour le choix de la nacelle, merci de cocher l'option retenue : </p>
-                        <t t-foreach="doc.get_nacelles()" t-as="nacelle">
-                            <div>
-                                <img t-att-src="'/is_france_filets/static/img/checkbox-unchecked.png'" style="max-height: 6mm;margin:1mm"/>
-                                <t t-esc="nacelle.name"/>
-                            </div>
-                        </t>
-                    </t>
-                </div>
-            </div>
-            <hr />
-            <div class="row">
-                <div class="col-xs-12">
-                    <b>Date et Signature :</b>
-                </div>
-            </div>
-
-
-
+            <p id="fiscal_position_remark" t-if="doc.fiscal_position_id and doc.fiscal_position_id.note">
+                <strong>Fiscal Position Remark:</strong>
+                <span t-field="doc.fiscal_position_id.note"/>
+            </p>
+            <div class="oe_structure"/>
         </div>
     </xpath>
 </template>

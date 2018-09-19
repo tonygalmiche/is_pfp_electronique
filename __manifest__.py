@@ -29,6 +29,8 @@ InfoSaône - Module Odoo pour CRM PFP Electronique
         'views/partner_view.xml',
         'views/product_view.xml',
         'views/menu.xml',
+        'report/layouts.xml',
+        'report/report_invoice.xml',
     ],
     'installable': True,
     'application': True,

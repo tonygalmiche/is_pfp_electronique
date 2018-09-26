@@ -2,6 +2,23 @@
 <odoo>
     <data>
 
+
+        <menuitem
+            name="Indicateurs"
+            id="is_sales_indicateurs_menu" 
+            parent="sales_team.menu_base_partner" 
+            sequence="800"
+        />
+        <menuitem
+            name="Lignes de factures"
+            id="is_account_invoice_line_menu" 
+            action="is_account_invoice_line_action"
+            parent="is_sales_indicateurs_menu"
+            sequence="10"
+        />
+
+
+
         <menuitem
             name="Tables Articles"
             id="is_sales_table_menu" 

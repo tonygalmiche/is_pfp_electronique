@@ -42,10 +42,10 @@
         </record>
 
 
-        <!-- is.activite --> 
-        <record id="is_activite_form" model="ir.ui.view">
-            <field name="name">is.activite.form</field>
-            <field name="model">is.activite</field>
+        <!-- is.type.entreprise --> 
+        <record id="is_type_entreprise_form" model="ir.ui.view">
+            <field name="name">is.type.entreprise.form</field>
+            <field name="model">is.type.entreprise</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
@@ -56,40 +56,83 @@
                 </form>
             </field>
         </record>
-        <record id="is_activite_tree" model="ir.ui.view">
-            <field name="name">is.activite.tree</field>
-            <field name="model">is.activite</field>
+        <record id="is_type_entreprise_tree" model="ir.ui.view">
+            <field name="name">is.type.entreprise.tree</field>
+            <field name="model">is.type.entreprise</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="name" />
                 </tree>
             </field>
         </record>
-        <record id="is_activite_search" model="ir.ui.view">
-            <field name="name">is.activite.search</field>
-            <field name="model">is.activite</field>
+        <record id="is_type_entreprise_search" model="ir.ui.view">
+            <field name="name">is.type.entreprise.search</field>
+            <field name="model">is.type.entreprise</field>
             <field name="arch" type="xml">
                 <search>
                     <field name="name" />
                </search>
             </field>
         </record>
-        <record  id="is_activite_action" model="ir.actions.act_window">
-            <field name="name">Activités</field>
-            <field name="res_model">is.activite</field>
+        <record  id="is_type_entreprise_action" model="ir.actions.act_window">
+            <field name="name">Type d'entreprise</field>
+            <field name="res_model">is.type.entreprise</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
 
 
+        <!-- is.source --> 
+        <record id="is_source_form" model="ir.ui.view">
+            <field name="name">is.source.form</field>
+            <field name="model">is.source</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="is_source_tree" model="ir.ui.view">
+            <field name="name">is.source.tree</field>
+            <field name="model">is.source</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+        <record id="is_source_search" model="ir.ui.view">
+            <field name="name">is.source.search</field>
+            <field name="model">is.source</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" />
+               </search>
+            </field>
+        </record>
+        <record  id="is_source_action" model="ir.actions.act_window">
+            <field name="name">Secteurs</field>
+            <field name="res_model">is.source</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+        <!-- res.partner -->
         <record model="ir.ui.view" id="is_view_partner_form">
             <field name="name">is_view_partner_form</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
                 <field name="category_id" position="after">
+                    <field name="is_type_entreprise_id"/>
                     <field name="is_secteur_id"/>
-                    <field name="is_activite_id"/>
+                    <field name="is_source_id"/>
                 </field>
             </field>
         </record>
@@ -100,8 +143,9 @@
             <field name="inherit_id" ref="base.view_partner_tree"/>
             <field name="arch" type="xml">
                 <field name="display_name" position="after">
+                    <field name="is_type_entreprise_id"/>
                     <field name="is_secteur_id"/>
-                    <field name="is_activite_id"/>
+                    <field name="is_source_id"/>
                 </field>
             </field>
         </record>
@@ -113,12 +157,12 @@
             <field name="inherit_id" ref="base.view_res_partner_filter"/>
             <field name="arch" type="xml">
                 <field name="name" position="after">
+                    <field name="is_type_entreprise_id"/>
                     <field name="is_secteur_id"/>
-                    <field name="is_activite_id"/>
+                    <field name="is_source_id"/>
                 </field>
             </field>
         </record>
-
 
   
     </data>

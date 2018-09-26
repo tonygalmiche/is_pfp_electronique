@@ -3,60 +3,74 @@
     <data>
 
         <menuitem
-            name="Tables"
+            name="Tables Articles"
             id="is_sales_table_menu" 
             parent="sales_team.menu_base_partner" 
             sequence="900"
         />
-
+        <menuitem
+            name="Types d'articles"
+            id="is_type_article_menu" 
+            action="is_type_article_action"  
+            parent="is_sales_table_menu" 
+            sequence="10"
+        />
         <menuitem
             name="Familles"
             id="is_famille_menu" 
             action="is_famille_action"  
             parent="is_sales_table_menu" 
-            sequence="10"
+            sequence="20"
         />
-
         <menuitem
             name="Sous-Familles 1"
             id="is_sous_famille1_menu" 
             action="is_sous_famille1_action"  
             parent="is_sales_table_menu" 
-            sequence="20"
+            sequence="30"
         />
-
-
         <menuitem
             name="Sous-Familles 2"
             id="is_sous_famille2_menu" 
             action="is_sous_famille2_action"  
             parent="is_sales_table_menu" 
-            sequence="30"
+            sequence="40"
         />
-
         <menuitem
             name="Emplacements de stocks"
             id="is_emplacement_stock_menu" 
             action="is_emplacement_stock_action"  
             parent="is_sales_table_menu" 
-            sequence="40"
+            sequence="50"
         />
 
 
+        <menuitem
+            name="Tables Clients"
+            id="is_table_client_menu" 
+            parent="sales_team.menu_base_partner" 
+            sequence="910"
+        />
+        <menuitem
+            name="Types d'entreprises"
+            id="is_type_entreprise_menu" 
+            action="is_type_entreprise_action"  
+            parent="is_table_client_menu" 
+            sequence="50"
+        />
         <menuitem
             name="Secteurs"
             id="is_secteur_menu" 
             action="is_secteur_action"  
-            parent="is_sales_table_menu" 
-            sequence="50"
-        />
-
-        <menuitem
-            name="Activités"
-            id="is_activite_menu" 
-            action="is_activite_action"  
-            parent="is_sales_table_menu" 
+            parent="is_table_client_menu" 
             sequence="60"
+        />
+        <menuitem
+            name="Sources"
+            id="is_source_menu" 
+            action="is_source_action"  
+            parent="is_table_client_menu" 
+            sequence="70"
         />
 
 

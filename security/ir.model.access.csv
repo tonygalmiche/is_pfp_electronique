@@ -4,5 +4,7 @@ access_is_sous_famille1,access_is_sous_famille1,model_is_sous_famille1,base.grou
 access_is_sous_famille2,access_is_sous_famille2,model_is_sous_famille2,base.group_user,1,1,1,1
 access_is_emplacement_stock,access_is_emplacement_stock,model_is_emplacement_stock,base.group_user,1,1,1,1
 access_is_secteur,access_is_secteur,model_is_secteur,base.group_user,1,1,1,1
-access_is_activite,access_is_activite,model_is_activite,base.group_user,1,1,1,1
+access_is_type_entreprise,access_is_type_entreprise,model_is_type_entreprise,base.group_user,1,1,1,1
+access_is_source,access_is_source,model_is_source,base.group_user,1,1,1,1
+access_is_type_article,access_is_type_article,model_is_type_article,base.group_user,1,1,1,1
 

@@ -2,6 +2,46 @@
 <odoo>
 
 
+    <!-- is.type.article --> 
+    <record id="is_type_article_form" model="ir.ui.view">
+        <field name="name">is.type.article.form</field>
+        <field name="model">is.type.article</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="is_type_article_tree" model="ir.ui.view">
+        <field name="name">is.type.article.tree</field>
+        <field name="model">is.type.article</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+    <record id="is_type_article_search" model="ir.ui.view">
+        <field name="name">is.type.article.search</field>
+        <field name="model">is.type.article</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+           </search>
+        </field>
+    </record>
+    <record  id="is_type_article_action" model="ir.actions.act_window">
+        <field name="name">Type d'article</field>
+        <field name="res_model">is.type.article</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
     <!-- is.famille --> 
     <record id="is_famille_form" model="ir.ui.view">
         <field name="name">is.famille.form</field>
@@ -174,6 +214,7 @@
                 <field name="is_lien_documentation"  widget="url" placeholder="documentation"/>
                 <field name="is_stock_mini"/>
                 <field name="is_lot_reappro"/>
+                <field name="is_type_article_id"/>
                 <field name="is_famille_id"/>
                 <field name="is_sous_famille1_id"/>
                 <field name="is_sous_famille2_id"/>
@@ -191,6 +232,7 @@
         <field name="arch" type="xml">
             <field name="name" position="after">
                 <field name="is_designation_groupe"/>
+                <field name="is_type_article_id"/>
                 <field name="is_famille_id"/>
                 <field name="is_sous_famille1_id"/>
                 <field name="is_sous_famille2_id"/>
@@ -211,6 +253,7 @@
         <field name="arch" type="xml">
             <field name="name" position="after">
                 <field name="is_designation_groupe"/>
+                <field name="is_type_article_id"/>
                 <field name="is_famille_id"/>
                 <field name="is_sous_famille1_id"/>
                 <field name="is_sous_famille2_id"/>

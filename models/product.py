@@ -4,18 +4,20 @@ from odoo import api, fields, models, tools, _
 from odoo.addons import decimal_precision as dp
 
 
+class IsTypeArticle(models.Model):
+    _name='is.type.article'
+    _order='name'
+    name = fields.Char("Type d'article", required=True)
 
 class IsFamille(models.Model):
     _name='is.famille'
     _order='name'
     name = fields.Char("Famille", required=True)
 
-
 class IsSousFamille1(models.Model):
     _name='is.sous.famille1'
     _order='name'
     name = fields.Char("Sous-famille 1", required=True)
-
 
 class IsSousFamille2(models.Model):
     _name='is.sous.famille2'
@@ -48,6 +50,7 @@ class ProductTemplate(models.Model):
     is_lien_documentation   = fields.Char('Lien documentation')
     is_stock_mini           = fields.Integer('Stock mini')
     is_lot_reappro          = fields.Integer('Lot de réappro')
+    is_type_article_id      = fields.Many2one('is.type.article', "Type d'article")
     is_famille_id           = fields.Many2one('is.famille', 'Famille')
     is_sous_famille1_id     = fields.Many2one('is.sous.famille1', 'Sous-famille 1')
     is_sous_famille2_id     = fields.Many2one('is.sous.famille2', 'Sous-famille 2')

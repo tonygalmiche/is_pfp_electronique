@@ -16,7 +16,8 @@
                     <div>
                         <b><span t-field="company.name"/></b><br />
                         <span t-field="company.street"/><br />
-                        <span t-field="company.zip"/> <span t-field="company.city"/>
+                        <span t-field="company.zip"/> <span t-field="company.city"/><br />
+                        FRANCE
                     </div>
                     <div><b><div t-field="company.rml_header1"/></b></div>
                 </div>

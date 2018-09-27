@@ -148,10 +148,12 @@
             </div>
             -->
 
+            <!--
             <p t-if="o.comment">
                 <strong>Comment:</strong>
                 <span t-field="o.comment"/>
             </p>
+            -->
             <p t-if="o.payment_term_id">
                 <span t-field="o.payment_term_id.note"/>
             </p>

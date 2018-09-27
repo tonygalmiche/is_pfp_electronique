@@ -43,10 +43,9 @@ class ProductTemplate(models.Model):
             qt=obj.is_stock_mini-obj.qty_available
             if qt<0:
                 qt=0
-            obj.is_qt_cde=qt
+            obj.is_qt_cde=-qt
 
 
-    is_designation_groupe   = fields.Char('Désignation groupe')
     is_lien_documentation   = fields.Char('Lien documentation')
     is_stock_mini           = fields.Integer('Stock mini')
     is_lot_reappro          = fields.Integer('Lot de réappro')
@@ -55,7 +54,7 @@ class ProductTemplate(models.Model):
     is_sous_famille1_id     = fields.Many2one('is.sous.famille1', 'Sous-famille 1')
     is_sous_famille2_id     = fields.Many2one('is.sous.famille2', 'Sous-famille 2')
     is_emplacement_stock_id = fields.Many2one('is.emplacement.stock', 'Emplacement de stock')
-    is_qt_cde               = fields.Float('Qt à commander', compute=_is_qt_cde, store=False, digits=dp.get_precision('Product Unit of Measure'))
+    is_qt_cde               = fields.Float('Signal de commande', compute=_is_qt_cde, store=False, digits=dp.get_precision('Product Unit of Measure'))
     is_note                 = fields.Text('Note')
 
 

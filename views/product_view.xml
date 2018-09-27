@@ -210,7 +210,6 @@
         <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">
             <field name="categ_id" position="after">
-                <field name="is_designation_groupe"/>
                 <field name="is_lien_documentation"  widget="url" placeholder="documentation"/>
                 <field name="is_stock_mini"/>
                 <field name="is_lot_reappro"/>
@@ -231,20 +230,32 @@
         <field name="inherit_id" ref="product.product_template_tree_view"/>
         <field name="arch" type="xml">
             <field name="name" position="after">
-                <field name="is_designation_groupe"/>
                 <field name="is_type_article_id"/>
                 <field name="is_famille_id"/>
                 <field name="is_sous_famille1_id"/>
                 <field name="is_sous_famille2_id"/>
             </field>
-            <field name="type" position="after">
+        </field>
+    </record>
+
+
+   <record id="is_view_stock_product_template_tree" model="ir.ui.view">
+        <field name="name">is_view_stock_product_template_tree</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="stock.view_stock_product_template_tree"/>
+        <field name="arch" type="xml">
+            <field name="qty_available" position="before">
                 <field name="is_emplacement_stock_id"/>
+            </field>
+            <field name="qty_available" position="after">
                 <field name="is_stock_mini"/>
-                <field name="is_lot_reappro"/>
                 <field name="is_qt_cde"/>
+                <field name="is_lot_reappro"/>
             </field>
         </field>
     </record>
+
+
 
    <record id="is_product_template_search_view" model="ir.ui.view">
         <field name="name">is_product_template_search_view</field>
@@ -252,7 +263,6 @@
         <field name="inherit_id" ref="product.product_template_search_view"/>
         <field name="arch" type="xml">
             <field name="name" position="after">
-                <field name="is_designation_groupe"/>
                 <field name="is_type_article_id"/>
                 <field name="is_famille_id"/>
                 <field name="is_sous_famille1_id"/>

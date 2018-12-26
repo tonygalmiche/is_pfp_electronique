@@ -147,9 +147,14 @@
                     <field name="is_secteur_id"/>
                     <field name="is_source_id"/>
                 </field>
+                <field name="phone" position="replace">
+                    <field name="property_payment_term_id"/>
+                </field>
+                <field name="email" position="replace">
+                    <field name="vat"/>
+                </field>
             </field>
         </record>
-
 
         <record model="ir.ui.view" id="is_view_res_partner_filter">
             <field name="name">is_view_res_partner_filter</field>

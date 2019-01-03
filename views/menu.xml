@@ -91,6 +91,19 @@
         />
 
 
+        <record id="is_lf2016_action" model="ir.actions.client">
+            <field name="name">Loi de finances 2016</field>
+            <field name="tag">is_pfp_electronique.homepage</field>
+        </record>
+        <menuitem 
+            id="is_lf2016_menu" 
+            parent="sales_team.menu_base_partner" 
+            action="is_lf2016_action" 
+            sequence="990"
+        />
+
+
+
 
 
     </data>

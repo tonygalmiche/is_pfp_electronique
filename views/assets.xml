@@ -3,6 +3,8 @@
     <template id="is_assets_backend" name="is_pfp_electronique assets" inherit_id="web.assets_backend">
         <xpath expr="." position="inside">
             <link rel="stylesheet" href="/is_pfp_electronique/static/src/css/style.css"/>
+            <script type="text/javascript"  src="/is_pfp_electronique/static/src/js/script.js"/>
         </xpath>
     </template>
 </odoo>
+

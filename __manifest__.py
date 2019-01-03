@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-    'name'     : 'InfoSaône - Module Odoo pour CRM PFP Electronique',
+    'name'     : u'InfoSaône - Module Odoo pour CRM PFP Electronique',
     'version'  : '0.1',
-    'author'   : 'InfoSaône',
-    'category' : 'InfoSaône',
+    'author'   : u'InfoSaône',
+    'category' : u'InfoSaône',
 
 
     'description': """
 InfoSaône - Module Odoo pour CRM PFP Electronique
 ===================================================
 """,
-    'maintainer' : 'InfoSaône',
+    'maintainer' : u'InfoSaône',
     'website'    : 'http://www.infosaone.com',
     'depends'    : [
         'base',
@@ -36,9 +36,10 @@ InfoSaône - Module Odoo pour CRM PFP Electronique
         'report/sale_report_templates.xml',
         'views/menu.xml',
     ],
+    'qweb': [
+        'static/src/xml/*.xml',
+    ],
     'installable': True,
     'application': True,
-    'qweb': [
-    ],
 }
 

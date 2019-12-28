@@ -33,27 +33,19 @@
     <xpath expr="//div[@class='footer']" position="replace">
     <div class="footer">
         <div class="text-center" style="border-top: 1px solid black;">
-
             <div>
                 Téléphone : <span t-field="company.phone"/> - Courriel : <span t-field="company.email"/> - Site Web : <span t-field="company.website"/>
             </div>
-
-
+            <div>
+                IBAN : <span t-field="company.partner_id.is_iban"/> - BIC : <span t-field="company.partner_id.is_bic"/>
+            </div>
             <span t-field="company.name"/> au capital de 18000€ - 
             NAF : <span t-field="company.ape"/> - 
             N°TVA : <span t-field="company.vat"/> - 
             SIRET : <span t-field="company.siret"/> - 
             <span class="page"/>/<span class="topage"/>
             <!--<span t-field="company.company_registry"/>-->
-
         </div>
-
-
-
-
-
-
-
     </div>
     </xpath>
 </template>

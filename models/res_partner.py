@@ -28,4 +28,5 @@ class ResPartner(models.Model):
     is_type_entreprise_id = fields.Many2one('is.type.entreprise', "Type d'entreprise")
     is_secteur_id         = fields.Many2one('is.secteur', 'Secteur')
     is_source_id          = fields.Many2one('is.source', 'Source')
-
+    is_iban               = fields.Char('IBAN')
+    is_bic                = fields.Char('BIC')

@@ -134,8 +134,13 @@
                     <field name="is_secteur_id"/>
                     <field name="is_source_id"/>
                 </field>
+                <field name="property_account_position_id" position="before">
+                    <field name="is_iban"/>
+                    <field name="is_bic"/>
+                </field>
             </field>
         </record>
+
 
         <record model="ir.ui.view" id="is_view_partner_tree">
             <field name="name">is_view_partner_tree</field>

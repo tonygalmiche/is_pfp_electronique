@@ -59,7 +59,7 @@ class is_account_invoice_line(models.Model):
                     ail.quantity,
                     ail.price_unit,
                     (ail.quantity*ail.price_unit) montant
-                from account_invoice ai inner join res_partner              rp on ai.partner_shipping_id=rp.id
+                from account_invoice ai inner join res_partner              rp on ai.partner_id=rp.id
                                         left outer join res_country         rc on rp.country_id=rc.id
                                         left outer join is_type_entreprise ite on rp.is_type_entreprise_id=ite.id
                                         left outer join is_secteur         sec on rp.is_secteur_id=sec.id
